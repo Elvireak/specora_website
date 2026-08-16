@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Results | Specora</title>
+  <link rel="icon" href="assets1/images/specora-2.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/results.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="assets1/images/specora-2.png" alt="" class="logo-mark" width="36" height="36">
+        Specora
+      </a>
+
+      <div class="nav-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">
+          <span id="theme-icon">&#9789;</span>
+          <span id="theme-label">Dark mode</span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="results.html" class="is-current">Results</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================
+         EMPTY STATE
+         Shown by results.js when no saved result exists
+         (e.g. student opens this page before taking the quiz).
+    ============================================= -->
+    <section class="section empty-state" id="empty-state">
+      <div class="content-wrap">
+        <h1>No results yet</h1>
+        <p>No results are available yet. Complete the quiz to discover which BSE specialisation may match your interests.</p>
+        <a href="quiz.html" class="btn btn-primary">Take the quiz</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         REAL RESULTS
+         Hidden by default; results.js fills it in and reveals
+         it only when a saved result is actually found.
+    ============================================= -->
+    <section class="section results-content" id="results-content" hidden>
+      <div class="content-wrap">
+
+        <p class="student-greeting fade-in-up" id="student-greeting">Hi there!</p>
+
+        <!-- Strongest-match highlight card -->
+        <article class="match-card match-reveal stagger-1" id="match-card">
+          <div class="match-card-icon" id="match-card-icon">
+            <svg viewBox="0 0 64 64" width="56" height="56" focusable="false">
+              <rect x="6" y="10" width="52" height="40" rx="6" fill="currentColor" opacity="0.15"/>
+              <rect x="6" y="10" width="52" height="10" rx="6" fill="currentColor" opacity="0.35"/>
+              <circle cx="14" cy="15" r="2" fill="currentColor"/>
+              <circle cx="22" cy="15" r="2" fill="currentColor"/>
+              <circle cx="30" cy="15" r="2" fill="currentColor"/>
+              <text x="32" y="42" text-anchor="middle" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" fill="currentColor">&lt;/&gt;</text>
+            </svg>
+          </div>
+          <div class="match-card-body">
+            <p class="match-card-label" id="match-card-label">Your strongest match</p>
+            <h1 class="match-card-title" id="match-heading">—</h1>
+            <p class="match-card-description" id="top-category-description"></p>
+          </div>
+        </article>
+
+        <div class="results-grid fade-in-up stagger-2">
+
+          <!-- Left column: canvas bar chart -->
+          <div class="results-chart-col">
+            <h2>Your scores across all four specialisations</h2>
+            <div class="chart-panel">
+              <canvas id="results-canvas" width="600" height="360"></canvas>
+            </div>
+          </div>
+
+          <!-- Right column: next steps -->
+          <div class="results-next-col">
+            <h2>Suggested next steps</h2>
+            <ol class="next-steps-list" id="next-steps-list">
+              <!-- results.js fills in recommendations -->
+            </ol>
+          </div>
+
+        </div>
+
+        <!-- Text score list (also highlights top / tied categories) -->
+        <ul class="score-list fade-in-up stagger-3" id="score-list">
+          <!-- results.js fills in one <li> per category -->
+        </ul>
+
+        <p class="disclaimer-text results-disclaimer fade-in-up stagger-4">
+          This result is guidance only. It does not make your final academic decision for you.
+        </p>
+
+        <div class="results-actions fade-in-up stagger-4">
+          <button type="button" class="btn btn-primary" id="retake-btn">Retake with new questions</button>
+          <a href="index.html" class="btn btn-secondary">Return home</a>
+        </div>
+
+        <!-- FAQ accordion -->
+        <section class="faq-section fade-in-up stagger-5" id="faq-section">
+          <h2>Frequently asked questions</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                What does my result mean?
+                <span class="faq-arrow">&#9662;</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>Your result shows which of the four specialisations your quiz answers leaned toward most, based on your interests. It is a starting point for reflection, not a fixed label.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                Can I retake the quiz?
+                <span class="faq-arrow">&#9662;</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>Yes. Use the &quot;Retake with new questions&quot; button above. You will re-enter your details and get a different set of questions than last time.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                Why did my questions change?
+                <span class="faq-arrow">&#9662;</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>Specora rotates between two prepared question sets each time you take the quiz, so a retake gives you fresh scenarios rather than the exact same questions.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                Is the result a final specialisation decision?
+                <span class="faq-arrow">&#9662;</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>No. This tool offers guidance only, based on a short quiz. Your final specialisation choice should also involve your own research and a conversation with your academic advisor.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div class="footer-col footer-brand">
+        <img src="assets1/images/Specora_logo.png" alt="Specora" class="footer-logo">
+        <p>A short quiz to help new Software Engineering students find their specialisation.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiz.html">Start Quiz</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#spec-fullstack">Full-Stack Web Development</a></li>
+          <li><a href="index.html#spec-machine-learning">Machine Learning</a></li>
+          <li><a href="index.html#spec-arvr">AR/VR Development</a></li>
+          <li><a href="index.html#spec-low-level">Low-Level Programming</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Project</h3>
+        <ul>
+          <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub Repository</a></li>
+          <li><a href="index.html">Live Application</a></li>
+          <li><a href="contact.html">Developer Info</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Specora &middot; Developed by Evika &middot; Educational guidance only</p>
+      <a href="#top" class="back-to-top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/results.js"></script>
+</body>
+</html>
