@@ -1,0 +1,196 @@
+/* --- Styles for the Results page only --- */
+
+/* --- EMPTY STATE --- */
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.empty-state p {
+  color: var(--color-text-muted);
+  max-width: 480px;
+  margin: 0 auto var(--space-md);
+}
+
+.empty-state .btn-primary {
+  animation: emptyNudge 2.2s ease-in-out infinite;
+}
+
+@keyframes emptyNudge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+/* --- STUDENT GREETING --- */
+.student-greeting {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+}
+
+/* --- MATCH CARD --- */
+.match-card {
+  display: flex; /* icon | body */
+  align-items: flex-start;
+  gap: var(--space-md);
+  background-color: var(--color-surface);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.match-card-icon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  line-height: 0;
+  margin-top: 0.15rem;
+}
+
+.match-card-body { min-width: 0; } /* allow long titles to wrap in flex */
+
+.match-card-label {
+  margin: 0 0 0.35rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+}
+
+.match-card-title {
+  margin: 0 0 0.6rem;
+  color: var(--color-primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.match-card-description {
+  margin: 0;
+  max-width: 52rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+}
+
+.match-card.is-neutral .match-card-title {
+  color: var(--color-text); /* “None” when all scores equal */
+}
+
+/* --- RESULTS GRID --- */
+.results-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+  align-items: start;
+}
+
+.results-chart-col h2,
+.results-next-col h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-sm);
+}
+
+/* --- CANVAS CHART PANEL --- */
+.chart-panel {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-sm) var(--space-sm) 0.5rem;
+}
+
+#results-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --- RANKED SCORE LIST --- */
+.score-list {
+  list-style: none;
+  margin: 0 0 var(--space-md);
+  padding: 0;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+  color: var(--color-text);
+}
+
+.score-item.score-cascade {
+  animation: scoreCascade 0.4s ease both;
+  animation-delay: calc(0.45s + (var(--cascade-i, 0) * 0.09s));
+}
+
+@keyframes scoreCascade {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.score-item.is-top {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.score-percent { flex-shrink: 0; }
+
+/* --- NEXT STEPS LIST --- */
+.next-steps-list {
+  list-style: none;
+  counter-reset: next-step;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-md);
+  margin: 0;
+}
+
+.next-steps-list li {
+  counter-increment: next-step;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.next-steps-list li:last-child { margin-bottom: 0; }
+
+.next-steps-list li::before {
+  content: counter(next-step);
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.next-steps-list a { font-weight: 600; } /* clickable retake phrase */
+
+/* --- DISCLAIMER + ACTION BUTTONS --- */
+.results-disclaimer { margin-bottom: var(--space-md); }
+
+.results-actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 800px) {
+  .results-grid { grid-template-columns: 1fr; }
+
+  .match-card {
+    flex-direction: column;
+    padding: var(--space-md);
+  }
+}

@@ -1,0 +1,298 @@
+/* contact.css — Contact page (sidebar + form card). Field basics = base.css */
+
+.contact-section {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-xl);
+}
+
+.contact-hero {
+  text-align: center; /* title + subtitle */
+  margin-bottom: var(--space-lg);
+}
+
+.contact-hero h1 {
+  color: var(--color-primary);
+  font-size: clamp(1.9rem, 4vw, 2.6rem); /* grows with viewport */
+  margin-bottom: 0.5rem;
+}
+
+.contact-subtitle {
+  margin: 0 auto;
+  max-width: 36rem;
+  color: var(--color-text-muted);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.4fr); /* left info | right form */
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.contact-sidebar {
+  display: flex;
+  flex-direction: column; /* author card then tips card */
+  gap: var(--space-md);
+}
+
+.contact-card {
+  background-color: var(--color-surface);
+  border: 1px solid rgba(100, 116, 139, 0.18);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  padding: var(--space-md);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.contact-card.reveal.is-visible:hover {
+  transform: translateY(-3px); /* keep lift after scroll-reveal */
+}
+
+.form-card h2,
+.tips-title {
+  margin: 0 0 var(--space-md);
+  font-size: var(--text-lg);
+}
+
+.author-profile {
+  display: flex; /* photo | name */
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+.author-avatar {
+  position: relative; /* for fallback icon overlay */
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%; /* circle crop */
+  overflow: hidden;
+  background-color: rgba(79, 70, 229, 0.12);
+  color: var(--color-primary);
+  line-height: 0;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop photo to circle */
+  display: block;
+}
+
+.author-avatar-fallback {
+  display: none; /* hidden while photo loads */
+  position: absolute;
+  inset: 0; /* fill the circle */
+  align-items: center;
+  justify-content: center;
+}
+
+.author-avatar img.is-missing { display: none; } /* onerror class */
+
+.author-avatar img.is-missing + .author-avatar-fallback {
+  display: flex; /* show silhouette if no photo */
+}
+
+.author-name {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.author-role {
+  margin: 0.15rem 0 0;
+  color: var(--color-primary); /* “BSE Student” */
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.author-bio {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.author-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(100, 116, 139, 0.18);
+}
+
+.author-links li {
+  border-bottom: 1px solid rgba(100, 116, 139, 0.18); /* row dividers */
+}
+
+.author-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.15rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.author-links a:hover { color: var(--color-primary); }
+
+.author-link-icon {
+  display: inline-flex;
+  color: var(--color-primary); /* GitHub / globe icons */
+}
+
+.author-link-chevron {
+  margin-left: auto; /* push › to far right */
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.tips-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.tips-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+}
+
+.tip-check {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%; /* purple check badge */
+  background-color: rgba(79, 70, 229, 0.12);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 0.05rem;
+}
+
+.form-card .form-group { margin-bottom: 1.15rem; }
+
+.field-hint {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--color-text-muted); /* e.g. Example: name@… */
+  font-size: var(--text-sm);
+}
+
+.message-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; /* error left, 0/500 right */
+  gap: var(--space-sm);
+  margin-top: 0.35rem;
+}
+
+.message-meta .error-message {
+  margin-top: 0;
+  flex: 1;
+}
+
+.char-count {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums; /* steady digit width */
+}
+
+.form-card .btn-primary {
+  width: 100%; /* full-width Send button */
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.form-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: var(--space-md);
+  padding: 0.9rem 1rem;
+  background-color: rgba(100, 116, 139, 0.08); /* neutral info box */
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+}
+
+.form-status[hidden] {
+  display: none !important; /* fully hide box + “i” until submit */
+}
+
+.form-status-icon {
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  border: 1.5px solid currentColor; /* circled “i” */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.form-status p {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.form-status.is-success {
+  background-color: rgba(21, 128, 61, 0.1); /* JS success state */
+  color: var(--color-success);
+}
+
+.form-status.is-error {
+  background-color: rgba(185, 28, 28, 0.08); /* JS error state */
+  color: var(--color-error);
+}
+
+.form-group textarea.is-valid,
+.form-group input.is-valid,
+.form-group select.is-valid {
+  border-color: var(--color-success); /* covers phone/subject/message too */
+  background-color: rgba(21, 128, 61, 0.06);
+}
+
+.form-group textarea.is-invalid,
+.form-group input.is-invalid,
+.form-group select.is-invalid {
+  border-color: var(--color-error);
+  background-color: rgba(185, 28, 28, 0.06);
+}
+
+.contact-faq {
+  margin-top: 0; /* sits directly under Before you send */
+}
+
+.contact-faq .faq-list {
+  max-width: none;
+}
+
+.contact-faq .faq-item {
+  /* match sidebar card edges */
+  box-shadow: none;
+}
+
+@media (max-width: 860px) {
+  .contact-layout { grid-template-columns: 1fr; } /* stack sidebar above form */
+}
