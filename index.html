@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specora | Find Your Specialisation</title>
+  <meta name="description" content="Specora helps incoming Software Engineering students discover which specialisation best matches their interests.">
+  <link rel="icon" href="assets1/images/specora-2.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+  <!-- ============================================
+       SHARED NAVIGATION
+       Same markup appears on all four pages so the
+       site feels like one connected application.
+  ============================================= -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="assets1/images/specora-2.png" alt="" class="logo-mark" width="36" height="36">
+        Specora
+      </a>
+
+      <div class="nav-actions">
+        <!-- type="button" stops this from ever behaving like a submit button -->
+        <button type="button" id="theme-toggle" class="theme-toggle">
+          <span id="theme-icon">&#9789;</span>
+          <span id="theme-label">Dark mode</span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html" class="is-current">Home</a></li>
+          <li><a href="quiz.html" id="quiz-nav-link">Quiz</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================
+         HERO SECTION
+         The first thing a new student sees. Explains
+         what the tool is and invites them to start.
+    ============================================= -->
+    <section class="hero">
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide is-active" style="background-image: url('assets1/images/HOME.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('assets1/images/hero_2.jpg');"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="fade-in-up">Specora</h1>
+        <p class="hero-subtitle fade-in-up">
+          A short interactive quiz to help you discover which Software
+          Engineering specialisation best matches your interests.
+        </p>
+        <a href="#student-form" class="btn btn-primary fade-in-up">Start the quiz</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         ABOUT THE TOOL
+    ============================================= -->
+    <section class="section about-section">
+      <div class="content-wrap reveal">
+        <h2>What is Specora?</h2>
+        <p>
+          SPECORA(SPEC + ORA), is a word that originates from "specialisation" and "exploration". 
+          Specora is a short, interactive quiz built for incoming
+          Software Engineering students. It asks about the activities and
+          problems you enjoy, then suggests which specialisation might suit
+          you best.
+        </p>
+        <p class="disclaimer-text">
+          N.B: Your result is guidance only. It does not make your academic
+          decision for you.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         HOW IT WORKS
+         A 3-step process, so numbered markers make
+         sense here (it's a real sequence).
+    ============================================= -->
+    <section class="section how-it-works">
+      <div class="content-wrap">
+        <h2 class="reveal">How it works</h2>
+        <ol class="steps-list">
+          <li class="step-card reveal reveal-delay-1">
+            <span class="step-number">1</span>
+            <h3>Enter your details</h3>
+            <p>Tell us your name, student ID, and institutional email.</p>
+          </li>
+          <li class="step-card reveal reveal-delay-2">
+            <span class="step-number">2</span>
+            <h3>Complete the quiz</h3>
+            <p>Answer 10 short questions about what you enjoy doing.</p>
+          </li>
+          <li class="step-card reveal reveal-delay-3">
+            <span class="step-number">3</span>
+            <h3>Explore your result</h3>
+            <p>See your strongest matching specialisation and what's next.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE FOUR SPECIALISATIONS
+    ============================================= -->
+    <section class="section specialisations-section" id="specialisations">
+      <div class="content-wrap">
+        <h2 class="reveal">The four specialisations</h2>
+        <div class="spec-grid">
+          <article class="spec-card reveal reveal-delay-1" id="spec-fullstack">
+            <h3>Full-Stack Web Development</h3>
+            <p>Building complete websites and applications, front-end to back-end.</p>
+          </article>
+          <article class="spec-card reveal reveal-delay-2" id="spec-machine-learning">
+            <h3>Machine Learning</h3>
+            <p>Teaching computers to find patterns and make predictions from data.</p>
+          </article>
+          <article class="spec-card reveal reveal-delay-3" id="spec-arvr">
+            <h3>AR/VR Development</h3>
+            <p>Creating immersive augmented and virtual reality experiences.</p>
+          </article>
+          <article class="spec-card reveal" id="spec-low-level">
+            <h3>Low-Level Programming</h3>
+            <p>Working close to hardware: memory, performance, and systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         STUDENT DETAILS FORM
+         Validated live by js/landing.js.
+    ============================================= -->
+    <section class="section form-section" id="student-form">
+      <div class="content-wrap form-wrap reveal">
+        <h2>Enter your details to begin</h2>
+        <p class="form-intro">
+          You'll need to enter your details again each time you start a new attempt.
+        </p>
+
+        <form id="student-details-form" novalidate>
+
+          <div class="form-group">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="firstName" autocomplete="given-name">
+            <small class="error-message" id="first-name-error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" name="lastName" autocomplete="family-name">
+            <small class="error-message" id="last-name-error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="student-id">Student ID</label>
+            <input type="text" id="student-id" name="studentId" inputmode="numeric" placeholder="10 digits, e.g. 2026001234">
+            <small class="error-message" id="student-id-error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Institutional email</label>
+            <input type="text" id="email" name="email" autocomplete="email" placeholder="yourname@alustudent.com">
+            <small class="error-message" id="email-error"></small>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="start-quiz-btn">Continue to quiz</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       SHARED FOOTER
+  ============================================= -->
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div class="footer-col footer-brand">
+        <img src="assets1/images/Specora_logo.png" alt="Specora" class="footer-logo">
+        <p>A short quiz to help new Software Engineering students find their specialisation.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiz.html">Start Quiz</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#spec-fullstack">Full-Stack Web Development</a></li>
+          <li><a href="index.html#spec-machine-learning">Machine Learning</a></li>
+          <li><a href="index.html#spec-arvr">AR/VR Development</a></li>
+          <li><a href="index.html#spec-low-level">Low-Level Programming</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Project</h3>
+        <ul>
+          <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub Repository</a></li>
+          <li><a href="index.html">Live Application</a></li>
+          <li><a href="contact.html">Developer Info</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Specora &middot; Developed by Elvire Akayezu &middot; for Educational guidance only</p>
+      <a href="#top" class="back-to-top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

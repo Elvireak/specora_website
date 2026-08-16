@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz | Specora</title>
+  <link rel="icon" href="assets1/images/specora-2.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+
+  <!-- Same shared nav as every page. Quiz is marked active here. -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="assets1/images/specora-2.png" alt="" class="logo-mark" width="36" height="36">
+        Specora
+      </a>
+
+      <div class="nav-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">
+          <span id="theme-icon">&#9789;</span>
+          <span id="theme-label">Dark mode</span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiz.html" class="is-current">Quiz</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="quiz-main">
+    <div class="content-wrap quiz-wrap">
+
+        <!--
+           TIMERS + PROGRESS
+           Sit above the question so they stay visible
+           and in the same position the whole quiz.
+     -->
+      <div class="quiz-status-bar">
+        <div class="timer-display" id="overall-timer-display">
+          <span class="timer-label">Overall time</span>
+          <span class="timer-value" id="overall-timer">02:00</span>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-text" id="progress-text">Question 1 of 10</div>
+          <div class="progress-track" id="progress-bar-track">
+            <div class="progress-fill" id="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUESTION AREA
+           quiz.js replaces the contents of #question-text
+           and #answer-options for each question. -->
+      <section class="question-card" id="question-card">
+        <div class="question-timer-row">
+          <span class="timer-label">Question time</span>
+          <span class="timer-value" id="question-timer">00:20</span>
+        </div>
+
+        <h2 class="question-text" id="question-text">Loading question...</h2>
+
+        <!-- Options are built here by JS, one per question -->
+        <div class="answer-options" id="answer-options"></div>
+
+        <!-- Placeholder area used later by audio/video questions -->
+        <div class="media-area" id="media-area"></div>
+
+        <button type="button" class="btn btn-primary next-btn" id="next-btn" disabled>
+          Next question
+        </button>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
