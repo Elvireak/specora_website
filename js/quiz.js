@@ -3,7 +3,7 @@
 /* --- TIMING + SCORING CONSTANTS --- */
 const OVERALL_TIME_LIMIT = 120;      // whole quiz countdown (seconds)
 const NORMAL_QUESTION_TIME = 15;     // seconds for a normal text question
-const MEDIA_QUESTION_TIME = 20;      // longer limit for audio / video questions
+const MEDIA_QUESTION_TIME = 25;      // longer limit for audio / video questions
 
 const BASE_POINTS = 3;               // points added to chosen specialisation
 const SPEED_BONUS_POINTS = 1;        // extra points if answered in first half of limit
@@ -295,7 +295,7 @@ function updateQuestionTimerDisplay() {
   }
 
   if (questionSecondsRemaining === 5) {
-    showTimeoutMessage("Hurry — time is almost up for this question!");
+    showTimeoutMessage("Hurry!! time is almost up for this question!");
   }
 }
 
