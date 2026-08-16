@@ -34,11 +34,10 @@
 
 This is a **static website** (HTML, CSS, JavaScript). No build step or server framework is required.
 
-1. Open the project folder: `Draft_of_BSE-Pathfinder`
+1. Open the project folder on your computer (wherever you cloned or downloaded Specora)
 2. Open `index.html` in a modern browser
   **or** use a simple local server (recommended for media assets), for example:
   - VS Code / Cursor: “Live Server”
-  - Or from the folder: `npx serve .`
 
 Start on **Home**, fill in the student form, then continue to the quiz.
 
